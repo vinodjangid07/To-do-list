@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List
+    </title>
+    <link rel="stylesheet" href="todolist.css">
+     <!-- fontawesome -->
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+     integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+</head>
+<body>
+    <div class="main-container" id="main-container">
+        <div class="heading-container"><article>To Do List</article></div>
+        <div class="input-container">
+            <input type="text" id="input">
+            <button class="add-btn" id="add-btn"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add</button>
+        </div>
+
+        </div>
+    </div>
+</body>
+<script>
+    var input = document.getElementById('input');
+    var addBtn = document.querySelector('.add-btn');
+    addBtn.addEventListener('click',addTask);
+    
+    function addTask(){
+        var taskContent = input.value;
+
+        let newTask = document.createElement('div');
+        newTask.innerHTML = `
+                <article class="task">${taskContent}</article>
+            <button class="delete-btn" onclick="deleteTask(this)"><i class="far fa-trash-alt"></i>&nbsp;&nbsp;Delete</button>`
+         newTask.className = "task-container show"
+         let mainContainer = document.getElementById('main-container');
+         mainContainer.appendChild(newTask);
+    }
+    let deleteBtn = document.querySelectorAll('.delete-btn');
+
+    function deleteTask(currElement){
+        currElement.parentElement.remove()
+    }
+</script>
+</html>
